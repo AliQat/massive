@@ -1,0 +1,128 @@
+/*
+NAME: Ali Sattar Jabbar Qattan, UMass Lowell Computer Science, ali_qattan@student.uml.edu
+DATE: 06/16/2024 
+GUI Assignment: Creating Your First Web Page 
+Copyright (c) 2024 by Qattan.  All rights reserved.  May be freely copied or excerpted for 
+educational purposes with credit to the author.
+updated by aLI June 16rd
+*/
+@font-face { /*Cute font I wanted to use. template from geeksforgeeks.com. font is from https://fonts.google.com/specimen/Pixelify+Sans*/
+    font-family: coolFont;
+    src: url(PixelifySans-Regular.ttf);
+}
+  
+body {
+    font-family: coolFont;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+/*a and c are for giving better indication of what is the x and y axis. x is red, y is green*/
+a { 
+    font-family: coolFont;
+    color: #710000; 
+}
+c {
+    font-family: coolFont;
+    color: #117100; 
+}
+/*I chose to encapsulate everything in a container  so that I can handle large tables easier*/
+.container {
+    background-image: url("bg.png"); /*I made the bg image in krita, I was gonna put more effort but I wanted to go to the beach*/
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+}
+/*This section is form styling, spacing and other minor adjustments, I did this in firefox 
+by just changing values until I liked something*/
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+label {
+    flex: 1 0 100%;
+}
+input {
+    flex: 1;
+    padding: 10px;
+}
+
+/* Add slider styling */
+.slider {
+    width: 100%;
+    margin: 10px 0;
+}
+
+/*This section is for button and its animation of glowiness since I was curious on how to do that*/
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px #ffb0e7, 0 0 10px #ffb0e7, 0 0 15px #ffb0e7;
+    }
+    50% {
+        box-shadow: 0 0 20px #ffb0e7, 0 0 30px #ffb0e7, 0 0 40px #ffb0e7;
+    }
+    100% {
+        box-shadow: 0 0 5px #ffb0e7, 0 0 10px #ffb0e7, 0 0 15px #ffb0e7;
+    }
+}
+
+button {
+    font-family: coolFont;
+    font-size: large;
+    padding: 10px 15px;
+    background: #ffb0e7;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #ffb0e7;
+    animation: glow 2s infinite;
+}
+/*This marks the end of the button*/
+
+.table-container {
+    margin-top: 20px;
+    height: 100px;
+    overflow: auto; /*overflow set to auto so that I can get automatic scroll bars*/
+    border: 1px solid #ff0000; /*border set to red so that the container is clear*/
+    scroll-snap-type: y mandatory; /* These do not work and I am too tired to fix  */
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    scroll-snap-type: y mandatory;
+}
+/*This section is for the individual cells in the table
+th means table header (the numbers that count up to the last number for both rows and columns)
+td means table data (the actual value)
+tr means table row (the actual table rows)
+*/
+th, td {
+    padding: 8px;
+    scroll-snap-align: start;
+    border: 5px solid #ddd;
+    text-align: center;
+}
+th {
+    position: sticky;
+    top: 0;
+    background: #f9f9f9;
+    z-index: 2; /* Ensure it's above td elements */
+}
+
+
+.error {
+    color: red;
+    margin-top: 10px;
+}
+
